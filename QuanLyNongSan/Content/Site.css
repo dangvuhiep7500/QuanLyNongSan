@@ -1,0 +1,18 @@
+﻿
+a#loginLink  {
+    color: #ffffff;
+    text-decoration: none;
+    position: relative;
+    padding: 10px 15px;
+}
+#RegisterLink {
+    color: #ffffff;
+    text-decoration: none;
+    position: relative;
+    padding: 10px 15px;
+}
+.btn-danger {
+    color: #fff;
+    background-color: #0da22f;
+    border-color: #0da22f;
+}

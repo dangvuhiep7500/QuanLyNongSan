@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="mainProduct" class="py-2">
+    <div class="container">
+        <div class="row my-4 main-header">
+            <div class="text-center m-auto ">
+                <h2 class="main-tittle mb-2 ">SẢN PHẨM MỚI</h2>
+            </div>
+            <div class="main-header-line text-center d-flex m-auto justify-content-center">
+                <span class="line-box"></span>
+                <i class="fas fa-fan mx-3"></i>
+                <span class="line-box"></span>
+            </div>
+        </div>
+        <p>@Html.Action("NongSanMoi", "NongSan")</p>
+
+    </div>
+</div>

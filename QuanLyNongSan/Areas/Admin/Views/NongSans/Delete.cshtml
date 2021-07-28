@@ -1,0 +1,89 @@
+﻿@model QuanLyNongSan.Models.NongSan
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>NongSan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDLoaiNS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDLoaiNS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTaNgan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTaNgan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotaChiTiet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotaChiTiet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayTao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayTao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NguoiTao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NguoiTao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayCapNhat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayCapNhat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NguoiCapNhat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NguoiCapNhat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnhDaiDien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhAnhDaiDien)
+        </dd>
+
+    </dl>
+
+
+</div>

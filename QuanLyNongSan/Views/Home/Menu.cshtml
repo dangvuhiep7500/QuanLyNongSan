@@ -1,0 +1,51 @@
+﻿@model IEnumerable<QuanLyNongSan.Models.LoaiN>
+
+
+
+<div class="row">
+    <div class="nav-menu my-bg-color ">
+        <div class="d-flex justify-content-evenly" aria-label="nav-menu">
+            <div>
+                <button type="button" class="nav-items btn  py-2 ">
+                    <a class="nav-link fw-bold" href="@Url.Action("Index","Home")">TRANG CHỦ</a>
+                </button>
+
+            </div>
+
+            <div>
+                <button type="button" class="nav-items btn  py-2 ">
+                    <a class="nav-link fw-bold" href="@Url.Action("GioiThieu","Home")">GIỚI THIỆU</a>
+                </button>
+
+            </div>
+
+            <div>
+                <button type="button" class="nav-items btn  py-2 ">
+                    <a class="nav-link fw-bold" href="#">DỊCH VỤ</a>
+                </button>
+
+            </div>
+
+            <div>
+                <button type="button" class="nav-items btn  py-2 ">
+                    <a class="nav-link fw-bold" href="@Url.Action("Index","TinTuc")">TIN TỨC</a>
+                </button>
+
+            </div>
+
+
+            <div>
+                <button type="button" class="nav-items btn  py-2 ">
+                    <a class="nav-link fw-bold " href="@Url.Action("Index","GioHang")">THANH TOÁN</a>
+                </button>
+
+            </div>
+            <div>
+                <button type="button" class="nav-items btn  py-2 ">
+                    <a class="nav-link fw-bold" href="#">LIÊN HỆ</a>
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>

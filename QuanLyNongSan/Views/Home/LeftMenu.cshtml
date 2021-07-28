@@ -1,0 +1,48 @@
+﻿@model IEnumerable<QuanLyNongSan.Models.LoaiN>
+
+@*    @{ foreach (var item in Model)
+            {
+    <div class="row mb-3">
+        <div class="mainContent-items col-6 text-start ">
+            @Html.ActionLink(item.TenLoai, "DanhMucNS", "NongSan", new { id = item.IDLoaiNS }, new { @class = "btn text-white" })
+        </div>
+    </div> } }*@
+@*<div class="container-fluid">
+    <div id="detail" class="my-5">
+        <div class="container ">*@
+
+            <div class="row mt-4">
+                <div class="detail-menu col-md-3 mt-4">
+                    <div class="list-group mb-4">
+                        <a class="list-group-item text-white active" aria-current="true">
+                            Danh mục sản phẩm
+                        </a>
+
+                        @{ foreach (var item in Model)
+                            {
+              
+                        @Html.ActionLink(item.TenLoai, "DanhMucNS", "NongSan", new { id = item.IDLoaiNS }, new { @class = "list-group-item" })
+                   } }
+
+                    </div>
+                </div>
+            </div>
+  @*      </div>
+    </div>
+</div>*@
+
+    @*<div class="list-group mb-4">
+            <a class="list-group-item text-white  active" aria-current="true">
+                Sản phẩm nổi bật
+            </a>
+            <a href="product.html" class="list-group-item ">Ớt Đà Lạt</a>
+            <a href="product.html" class="list-group-item ">Cà chua bi</a>
+            <a href="product.html" class="list-group-item ">Nho xanh Úc</a>
+            <a href="product.html" class="list-group-item ">Quả kiwi vàng</a>
+            <a href="product.html" class="list-group-item ">Sầu riêng</a>
+            <a href="product.html" class="list-group-item ">Bơ sáp</a>
+            <a href="product.html" class="list-group-item ">Rau cần tây</a>
+            <a href="product.html" class="list-group-item ">Bột gừng</a>
+            <a href="product.html" class="list-group-item ">Nấm Linh Chi</a>
+            <a href="product.html" class="list-group-item ">Đường thốt nốt</a>
+        </div>*@

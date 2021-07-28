@@ -1,0 +1,576 @@
+﻿@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>
+*@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/style.css" rel="stylesheet">
+    <link href="~/Content/Site.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Content/responsive.css">
+    <link rel="icon" href="/img/myLogo.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="~/scripts/main.js"></script>
+
+    <title>Nông Sản Việt Nam</title>
+</head>
+<body>
+    <div class="container body-content">
+        <header>
+            <div class="row my-bg-color ">
+                <div class="col-lg-6 col-md-9 m-auto text-center py-2 text-white ">
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+
+            <!-- ______________________nav-bar______________________ -->
+
+            <div class="row header-nav ">
+                <nav class="navbar navbar-expand-lg  p-0 text-center">
+
+                    <button class="navbar-menu-mobile navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+
+                    <a class="navbar-brand  col-lg-4 col-md-5 col-sm-5 col-10 m-0 px-2" href="@Url.Action("Index","Home")">
+                        <img src="~/img/brand.png" alt="logo" class="img-fluid">
+                    </a>
+                    @using (Html.BeginForm("TimKiemNS", "Home"))
+                    {
+
+                        <input id="txtTimKiem" name="txtTimKiem" class="form-control btn-search" type="search" placeholder="Tìm kiếm sản phẩm">}
+                    @{ Html.RenderAction("HeaderCart", "Home");}
+
+                </nav>
+            </div>
+
+        </header>
+
+        <div class="container">
+            @Html.Action("Menu", "Home")
+        </div>
+        <div id="main">
+            <div id="slider">
+                <div id="Carousel-slide" class="carousel slide col-md-12 p-0" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#Carousel-slide" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#Carousel-slide" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#Carousel-slide" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+
+                    <!-- ____________________________________________ -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="~/img/slider-1.jpg" class="img-fluid w-100" alt="slider1">
+                            <div class="my-carousel-caption ">
+                                <span>ShopNongSanSach</span>
+                                <h1>THỰC PHẨM AN TOÀN - DỄ DÀNG LỰA CHỌN</h1>
+                                <a href="#">
+                                    <p>_____<button type="button" class="btn">CỬA HÀNG</button>_____</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/img/slider-2.jpg" class="img-fluid w-100" alt="slider2">
+                            <div class="my-carousel-caption text-center">
+                                <span>ShopNongSanSach</span>
+
+                                <h1>ĂN SẠCH - SỐNG KHỎE</h1>
+
+                                <a href="#">
+                                    <p>_____<button type="button" class="btn">CỬA HÀNG</button>_____</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/img/slider-3.jpg" class="img-fluid w-100" alt="slider3">
+                            <div class="my-carousel-caption ">
+                                <span>ShopNongSanSach</span>
+
+                                <h1>MUA HÀNG ƯU ĐÃI 50% GIÁ TRỊ</h1>
+
+                                <a href="#">
+                                    <p>_____<button type="button" class="btn">CỬA HÀNG</button>_____</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ______________________________________________ -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#Carousel-slide" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#Carousel-slide" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+
+
+            @*<div class="container">
+                    <div class="row my-4 main-header">
+
+                        <div class="text-center m-auto">
+
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>*@
+            <div class="container">
+                <div class="row my-4 main-heade">
+                    <div class="col-sm-4 col-md-3">
+                        @Html.Action("LeftMenu", "Home")
+                    </div>
+                    <div class="col-sm-8 col-md-9">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="storeIntro" class="py-4">
+                <div class="container mb-3">
+
+                    <div class="row mb-4 main-header">
+                        <div class="text-center m-auto ">
+                            <h2 class="main-tittle mb-2 ">ĐẾN VỚI NÔNG SẢN SẠCH</h2>
+                        </div>
+                        <div class="main-header-line text-center d-flex m-auto justify-content-center">
+                            <span class="line-box"></span>
+                            <i class="fas fa-fan mx-3"></i>
+                            <span class="line-box"></span>
+                        </div>
+                    </div>
+
+                    <!-- _____________________________________- -->
+
+                    <div class="row my-3">
+
+                        <!-- ________________1_________________ -->
+
+                        <div class="intro-outside  col-lg-3 col-md-6  mb-3">
+                            <a href="#">
+                                <div class="intro-box">
+                                    <div class="intro-overlay intro-overlay-1"></div>
+                                    <div class="intro-img">
+                                        <img src="~/img/healthy-1.png" class="img-fluid " alt="">
+                                    </div>
+                                </div>
+                                <div class="intro-text text-center fw-bold">Tươi ngon</div>
+                            </a>
+
+                        </div>
+
+                        <!-- ________________2_________________ -->
+
+                        <div class="intro-outside  col-lg-3 col-md-6  mb-3">
+                            <a href="#">
+                                <div class="intro-box">
+                                    <div class="intro-overlay intro-overlay-2"></div>
+                                    <div class="intro-img">
+                                        <img src="~/img/healthy-2.png" class="img-fluid " alt="">
+                                    </div>
+                                </div>
+                                <div class="intro-text text-center fw-bold">An toàn</div>
+                            </a>
+
+                        </div>
+                        <!-- ________________3_________________ -->
+
+                        <div class="intro-outside  col-lg-3 col-md-6  mb-3">
+                            <a href="#">
+                                <div class="intro-box">
+                                    <div class="intro-overlay intro-overlay-3"></div>
+                                    <div class="intro-img">
+                                        <img src="~/img/healthy-3.png" class="img-fluid " alt="">
+                                    </div>
+                                </div>
+                                <div class="intro-text text-center fw-bold">Đa dạng</div>
+                            </a>
+
+                        </div>
+                        <!-- ________________4_________________ -->
+
+                        <div class="intro-outside  col-lg-3 col-md-6  mb-3">
+                            <a href="#">
+                                <div class="intro-box">
+                                    <div class="intro-overlay intro-overlay-4"></div>
+                                    <div class="intro-img">
+                                        <img src="~/img/healthy-4.png" class="img-fluid " alt="">
+                                    </div>
+                                </div>
+                                <div class="intro-text text-center fw-bold">healthy</div>
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <!-- _______________#safeInfor______________________-->
+            <div id="safeInfor">
+                <div class="container my-3">
+
+                    <div class="row my-4 main-header">
+                        <div class="text-center m-auto ">
+                            <h2 class="main-tittle mb-2 ">AN TOÀN THỰC PHẨM</h2>
+                        </div>
+                        <div class="main-header-line text-center d-flex m-auto justify-content-center">
+                            <span class="line-box"></span>
+                            <i class="fas fa-fan mx-3"></i>
+                            <span class="line-box"></span>
+                        </div>
+                    </div>
+
+                    <!-- _____________________________________- -->
+
+                    <div class="row  mt-2 ">
+
+                        <!-- ______________________1____________________ -->
+                        <div class="col-md-6 col-sm-12">
+                            <div class="safe-items mb-3 ">
+                                <div class="row">
+                                    <div class="safe-items-img col-md-4 col-sm-12">
+                                        <a href="#"> <img src="~/img/safe-1.jpg" alt=""></a>
+                                    </div>
+                                    <div class="safe-items-text col-md-8 py-3 col-sm-12">
+                                        <a href="#">
+                                            <h4>Mẹo Chữa Bệnh Đau Dạ Dày Tại Nhà</h4>
+                                        </a>
+                                        <p class="text-muted">Update 21:20 23/05/2021</p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- ______________________2____________________ -->
+                        <div class="col-md-6 col-sm-12">
+                            <div class="safe-items mb-3 ">
+                                <div class="row">
+                                    <div class="safe-items-img col-md-4 col-sm-12">
+                                        <a href="#"> <img src="~/img/safe-2.jpg" alt=""></a>
+                                    </div>
+                                    <div class="safe-items-text col-md-8 py-3 col-sm-12">
+                                        <a href="#">
+                                            <h4>Thực đơn ăn chay đủ chất dinh dưỡng</h4>
+                                        </a>
+                                        <p class="text-muted">Update 12:06 21/05/2021</p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- ______________________1____________________ -->
+                        <div class="col-md-6 col-sm-12">
+                            <div class="safe-items mb-3 ">
+                                <div class="row">
+                                    <div class="safe-items-img col-md-4 col-sm-12">
+                                        <a href="#"> <img src="~/img/safe-3.jpg" alt=""></a>
+                                    </div>
+                                    <div class="safe-items-text col-md-8 py-3 col-sm-12">
+                                        <a href="#">
+                                            <h4>Cách ăn trứng vịt bắc thảo</h4>
+                                        </a>
+                                        <p class="text-muted">Update 17:14 16/05/2021</p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- ______________________1____________________ -->
+                        <div class="col-md-6 col-sm-12">
+                            <div class="safe-items mb-3 ">
+                                <div class="row">
+                                    <div class="safe-items-img col-md-4 col-sm-12">
+                                        <a href="#"> <img src="~/img/safe-4.jpg" alt=""></a>
+                                    </div>
+                                    <div class="safe-items-text col-md-8 py-3 col-sm-12">
+                                        <a href="#">
+                                            <h4>Giá trị dinh dưỡng của xoài cát Hòa Lộc</h4>
+                                        </a>
+                                        <p class="text-muted">Update 09:20 24/04/2021</p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- _______________#partner______________________-->
+
+            <div id="partner" class="py-4">
+
+                <div class="container my-3">
+
+                    <div class="row my-4 main-header">
+                        <div class="text-center m-auto ">
+                            <h2 class="main-tittle mb-2 ">ĐỐI TÁC CỦA CHÚNG TÔI</h2>
+                        </div>
+                        <div class="main-header-line text-center d-flex m-auto justify-content-center">
+                            <span class="line-box"></span>
+                            <i class="fas fa-fan mx-3"></i>
+                            <span class="line-box"></span>
+                        </div>
+                    </div>
+
+                    <!-- _____________________________________- -->
+
+                    <div class="row my-3">
+                        <!-- _______________1_________________ -->
+                        <div class="partner-box col-lg-3 col-6  mb-3">
+                            <a href="https://vinmart.com/">
+                                <div class="partner-img">
+                                    <img src="~/img/doitac-11.jpg" alt="">
+                                </div>
+                            </a>
+
+                        </div>
+
+                        <!-- _______________2_________________ -->
+                        <div class="partner-box col-lg-3 col-6  mb-3">
+                            <a href="http://www.co-opmart.com.vn/">
+                                <div class="partner-img">
+                                    <img src="~/img/doitac-22.png" alt="">
+
+                                </div>
+                            </a>
+
+                        </div>
+
+                        <!-- _______________3_________________ -->
+                        <div class="partner-box col-lg-3 col-6  mb-3">
+                            <a href="https://www.kmart.com/">
+                                <div class="partner-img">
+                                    <img src="~/img/doitac-33.jpg" alt="">
+
+                                </div>
+                            </a>
+
+                        </div>
+
+                        <!-- _______________4_________________ -->
+                        <div class="partner-box col-lg-3 col-6  mb-3">
+                            <a href="https://www.facebook.com/Palmymarthoaphuoc/">
+                                <div class="partner-img">
+                                    <img src="~/img/doitac-44.jpg" alt="">
+
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ______________begin callnow_____________ -->
+
+            <div id="call-now">
+
+
+
+
+                <a href="tel:0905228606 ">
+
+                    <div class="call-aro-out"></div>
+                    <div class="call-aro-in"></div>
+                    <div class="call-btn" title="CALL NOW"> </div>
+
+                </a>
+
+
+
+            </div>
+            <!-- __________#messenger______________ -->
+
+            <div id="messenger">
+
+                <div class="mess-btn">
+                    <div><i class="fab fa-facebook-messenger"></i></div>
+
+                </div>
+
+                <div class="close-btn">
+                    <div><i class="fas fa-times-circle"></i> </div>
+
+                </div>
+            </div>
+
+            <!-- _____________#noti________________ -->
+
+            <div id="noti">
+                <div class="noti-tittle full-w left">
+                    <span>
+                        <span> Gửi tin nhắn</span>
+                        <i id="mobileMessClose" class="fas fa-times right"></i>
+
+                    </span>
+                    <p> Bạn vui lòng điền vào biểu mẫu dưới đây và chúng tôi sẽ liên lạc với bạn ngay khi có thể.</p>
+                </div>
+
+                <div class="noti-form col-11">
+                    <form action="">
+                        <input class="col-11" type="text" required placeholder="*Tên">
+                        <input class="col-11" type="text" required placeholder="*Sđt">
+                        <textarea class="col-11" required placeholder="*Nội dung"></textarea>
+                        <input class="col-11" type="submit" value="Hoàn tất">
+                    </form>
+
+                </div>
+
+                <div class="noti-end w-100">
+                    <a>we're<img src="~/img/thunder.png" alt="">by <b>Tawk.to</b> </a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <footer>
+        <div class="container pb-4">
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="footer-items">
+                        <div class="footer-tittle">
+                            <img src="~/img/brand-footer.png" alt="">
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Chào mừng đến với Nông Sản Sạch. Sản phẩm của chúng tôi bảo đảm chất lượng tốt nhất ngay trước khi đến nhà bạn.</li>
+                            <li class="list-group-item"><i class="fas fa-map-marker-alt me-2"></i> 50, Tố Hữu, Quận 9 ,Tp HCM</li>
+                            <li class="list-group-item"><i class="fas fa-phone me-2"></i> 0234.123.123 - 0935.352.523</li>
+                            <li class="list-group-item">Hoặc liên lạc với chúng tôi qua :</li>
+                            <li class="list-group-item d-flex">
+                                <a href="#"><i class="fab fa-facebook-square me-2"></i></a>
+                                <a href="#"><i class="fas fa-envelope mx-2"></i></a>
+                                <a href="#"><i class="fab fa-instagram-square mx-2"></i></a>
+                                <a href="#"><i class="fab fa-twitter mx-2"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="footer-items">
+                        <div class="footer-tittle">
+                            <h5 class="text-white">THÔNG TIN - CHÍNH SÁCH</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="#">Giao nhận hàng</a></li>
+                            <li class="list-group-item"><a href="#">Hướng dẫn đặt hàng</a></li>
+                            <li class="list-group-item"><a href="#">Hình thức thanh toán</a></li>
+                            <li class="list-group-item"><a href="#">Chính sách đổi trả hàng</a></li>
+                            <li class="list-group-item"><a href="#">Chính Sách Giải quyết khiếu nại</a></li>
+                            <li class="list-group-item"><a href="#">Chính sách bảo hành</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+
+
+                    <div class="footer-items">
+                        <div class="footer-tittle">
+                            <h5 class="text-white">HỖ TRỢ KHÁCH HÀNG</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Vui lòng để lại thông tin của bạn để nhận ưu đãi hấp dẫn từ Nông Sản Sạch!</li>
+                            <form action="">
+                            <li class="list-group-item">
+                                <input type="text" placeholder="Họ và tên" required>
+                            </li>
+                            <li class="list-group-item">
+                                <input type="text" placeholder="Số điện thoại" required>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-center">
+                                <button type="submit" class="btn fw-bold" required>TƯ VẤN ĐẶT HÀNG</button>
+                            </li>
+                            </form>
+
+
+                        </ul>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </footer>
+    @RenderSection("jsFooter", required: false)
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

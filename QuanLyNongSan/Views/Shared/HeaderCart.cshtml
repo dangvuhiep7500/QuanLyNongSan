@@ -1,0 +1,28 @@
+﻿@model List<QuanLyNongSan.Models.CartItem>
+
+@{List<QuanLyNongSan.Models.CartItem> gio = Session["giohang"] as List<QuanLyNongSan.Models.CartItem>; }
+
+
+
+<div class="navbar-user col-lg-4  justify-content-center">
+    <div href="@Url.Action("Index","GioHang")">
+        <div class="navbar-basket ms-2">
+            <i class="fas fa-cart-arrow-down"></i>
+            @{if (gio == null || gio.Count == 0)
+                {
+
+                    <div class="basket-count">0</div>
+
+                }
+                else
+                {
+
+                    <div class="basket-count">@gio.Count</div>
+
+                }
+            }
+        </div>
+
+    </div>
+</div>
+

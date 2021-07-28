@@ -1,0 +1,125 @@
+﻿@model IEnumerable<QuanLyNongSan.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+    <script>
+    $(function () {
+            $(".popup_button_delete").click(function (e) {
+                e.preventDefault();
+                bootbox.dialog({
+                    message: "Bạn có chắc chắn muốn xóa các thông tin đã chọn không?",
+                    title: "Xác nhận xóa thông tin",
+                    buttons: {
+                        success: {
+                            label: "Đồng ý!",
+                            className: "btn-success",
+                            callback: function () {
+                                $('form').submit();
+                                //__doPostBack('btnDelete', 'OnClick');
+                            }
+                        },
+                        danger: {
+                            label: "Hủy bỏ!",
+                            className: "btn-danger",
+                            callback: function () {
+                                //Example.show("Xem lại");
+                            }
+                        }
+                    }
+                });
+                return false;
+            });
+        });</script>
+    @using (Html.BeginForm("Delete", "HoaDon", FormMethod.Post))
+    {
+        <div class="container">
+            <h2>&nbsp;</h2>
+            <div class="panel panel-default MaginTop">
+                <div class="panel-heading">
+                    <h2 class="panel-title" style="height:32px">
+                        <b style="font-size:20pt">Danh sách hóa đơn</b>
+                        <div class="btn-group" role="group" aria-label="..." style="float:right">
+                            <input type="submit" value="Xóa" class="btn btn-default popup_button_delete" />
+                            @Html.ActionLink("Đóng", "Close", "HoaDon", new { @class = "btn btn-default" })
+                        </div>
+                    </h2>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered">
+                        <tr>
+
+                            <th style="text-align:center">
+                                Mã hóa đơn
+                            </th>
+                            <th style="text-align:center">
+                                Tên nông sản
+                            </th>
+                            <th style="text-align:center">
+                                Số lượng
+                            </th>
+                            <th style="text-align:center">
+                                Thành tiền
+                            </th>
+                            <th style="text-align:center">
+                                Họ và tên
+                            </th>
+                            <th>
+                                Số điện thoại
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Địa chỉ
+                            </th>
+                            <th>
+                                Ghi chú
+                            </th>
+                            <th>
+                                Xuất hóa đơn
+                            </th>
+                        </tr>
+                        @{ var i = 1;
+                            foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.orderID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Custormer.cusFullName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Custormer.cusFullName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Custormer.cusFullName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Custormer.cusFullName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Custormer.cusPhone)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Custormer.cusEmail)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Custormer.cusAddress)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.orderMessage)
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+ i++;
+                            } }
+                    </table>
+                </div>
+            </div>
+        </div>}

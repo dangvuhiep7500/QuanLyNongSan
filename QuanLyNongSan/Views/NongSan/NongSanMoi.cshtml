@@ -1,0 +1,33 @@
+﻿@model IEnumerable<QuanLyNongSan.Models.NongSan>
+
+<div class="row">
+    @{
+        foreach (var item in Model)
+        {
+
+            <div class="mainContent-item col-lg-3 col-md-4 col-sm-6 mb-3">
+                <a href="#">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="@item.HinhAnhDaiDien" class="card-img-top  img-thumbnail" alt="">
+                            <div class="card-overlay text-center w-100">
+                                @Html.ActionLink("Xem chi tiết", "ChiTietNS", "NongSan", new { id = item.ID }, new { @class = "btn btn-success", @role = "button" })
+                            </div>
+                        </div>
+                        <div class="card-body text-center">
+                            <a href="#">
+                                <h5 class="card-title">@item.TenNS</h5>
+                            </a>
+                            <div class="pb-3">
+                                <span class="card-text fw-bold"><i class="fas fa-money-bill-wave"></i> @Int32.Parse(item.Price).ToString("#,##0") VNĐ</span>
+                            </div>
+                           
+                                <a href="/GioHang/themvaogio?SanPhamID=@item.ID&quantity=1" class="btn my-bg-color text-white w-100 ">Đặt hàng</a>
+                           
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    }
+</div>

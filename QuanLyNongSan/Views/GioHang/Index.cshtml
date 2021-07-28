@@ -1,0 +1,104 @@
+﻿@model List<QuanLyNongSan.Models.CartItem>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section jsFooter{
+
+    <script src="/Scripts/OrderController.js"></script>
+}
+<div id="payNow">
+    <div class="container">
+        @if (Model == null || Model.Count == 0)
+        {
+            <div class="spec ">
+                <h3>Giỏ hàng</h3>
+                <div class="ser-t">
+                    <b></b>
+                    <span><i></i></span>
+                    <b class="line"></b>
+                </div>
+            </div>
+            <p class="text-info text-center" style="font-size:25px;">
+                Giỏ hàng của bạn trống!
+            </p> }
+        else
+        {
+            <div class="row py-3 main-header">
+                <div class="text-center m-auto ">
+                    <h2 class="main-tittle mb-2 ">Giỏ hàng của bạn</h2>
+                </div>
+                <div class="main-header-line text-center d-flex m-auto justify-content-center">
+                    <span class="line-box"></span>
+                    <i class="fas fa-fan mx-3"></i>
+                    <span class="line-box"></span>
+                </div>
+            </div>
+            int total = 0;
+            int i = 0;
+            <div class="row">
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Hình</th>
+                                <th scope="col">Tên sản phẩm</th>
+                                <th scope="col">Số lượng(kg)</th>
+                                <th scope="col">Đơn giá</th>
+                                <th scope="col">Thành tiền</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                                <tr class="product-item-table">
+                                    <td scope="row" class="text"><img src="@item.Hinh" width="70" height="60" /> </td>
+                                    <td><a class="text" target="_blank" href="@Url.Action("ChiTietNS", "NongSan", new { id = item.SanPhamID })" style="font-size: medium; color: #1B242F; text-decoration: none;"> @item.TenSanPham </a> </td>
+                                    <td>
+                                        <div class="formsoluong">
+                                            <input class="idsp" type="hidden" name="SanPhamID" value="@item.SanPhamID" />
+                                            <div class="number-input">
+                                                <input type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="giohangprice" value="-">
+                                                <input class="text-center soluongsp" type="number" min="1" step="1" name="soluongmoi" value="@item.SoLuong" />
+                                                @* <input class="text-center" type="text" id="number" value="1" />*@
+                                                <input type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus giohangprice" value="+">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td> @Int32.Parse(item.DonGia).ToString("#,##0") VNĐ </td>
+                                    <td> @item.ThanhTien.ToString("#,##0") VNĐ </td>
+                                    <td> <button value="@item.SanPhamID" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm btn-xoakhoigio">Xóa</button> </td>
+                                </tr>
+                                i++;
+                                total += @item.ThanhTien;
+                            }
+                            <tr>
+                                <td></td>
+                                <td class="text-right"></td>
+                                <td></td>
+                                <td class="text-end fw-bold text-danger">Tổng thành tiền:</td>
+                                <td style="font-size: large; color: #DC3545; font-weight: 700 !important; ">@total.ToString("#,##0") VNĐ </td>
+                                <td><a href="@Url.Action("Index", "ThanhToan")" role="button" class="btn btn-success" id="btn-thanhtoan">Thanh toán</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="@Url.Action("Index","Home")">
+                        <input type="submit" style="width:auto;" name="submit_step1" id="btnContinue" class="btn btn-danger" value="Tiếp tục mua hàng">
+                    </a>
+
+                    <a href="/GioHang/DeleteAll"><input type="submit" style="width:auto;" name="submit_step1" id="" class="btn btn-danger" value="Xóa giỏ hàng">
+                    </a>
+                </div>
+
+
+            </div>
+
+        }
+    </div>
+</div>
+
+

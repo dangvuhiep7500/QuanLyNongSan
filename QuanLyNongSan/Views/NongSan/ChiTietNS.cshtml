@@ -1,0 +1,65 @@
+﻿@using QuanLyNongSan.Models;
+@model QuanLyNongSan.Models.NongSan
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="detail" class="my-5">
+    <div class="container ">
+        <div class="row">
+
+
+            <div class="col-md-6 ps-0 mb-2">
+                <div id="slider">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="@Model.HinhAnhDaiDien" class="w-100 img-thumbnail" alt="slider1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-6">
+                <p>
+                    <h2></h2>
+                    <div class="row my-1 main-header">
+                        <div class="text-center m-auto ">
+                            <h2 class="main-tittle mb-2 ">@Model.TenNS</h2>
+                        </div>
+                        <div class="main-header-line text-center d-flex m-auto justify-content-center">
+                            <span class="line-box"></span>
+                            <i class="fas fa-fan mx-3"></i>
+                            <span class="line-box"></span>
+                        </div>
+                    </div>
+                </p>
+
+                <p>
+                    @Html.Raw(Model.MoTaNgan)
+
+                </p>
+            </div>
+        </div>
+        <div class="row mt-4">
+
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="detail-content">
+
+                        <ul class="detail-content">
+                            <li class="detail-content-item active">Thông tin sản phẩm</li>
+
+                        </ul>
+                        <div class="detail-line"></div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="detail-text-item active">
+                            <div>@Html.Raw(Model.MotaChiTiet)</div>
+                        </div>                   
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
