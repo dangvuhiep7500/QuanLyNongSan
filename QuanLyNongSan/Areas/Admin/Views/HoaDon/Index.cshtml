@@ -50,33 +50,18 @@
                 <div class="panel-body">
                     <table class="table table-bordered">
                         <tr>
-
+                            <th style="text-align:center">Chọn</th>
                             <th style="text-align:center">
                                 Mã hóa đơn
                             </th>
                             <th style="text-align:center">
-                                Tên nông sản
-                            </th>
-                            <th style="text-align:center">
-                                Số lượng
-                            </th>
-                            <th style="text-align:center">
-                                Thành tiền
-                            </th>
-                            <th style="text-align:center">
                                 Họ và tên
                             </th>
-                            <th>
+                            <th style="text-align:center">
                                 Số điện thoại
                             </th>
-                            <th>
-                                Email
-                            </th>
-                            <th>
-                                Địa chỉ
-                            </th>
-                            <th>
-                                Ghi chú
+                            <th style="text-align:center">
+                                Ngày đặt
                             </th>
                             <th>
                                 Xuất hóa đơn
@@ -86,7 +71,7 @@
                             foreach (var item in Model)
                             {
                                 <tr>
-
+                                    <td style="text-align:center"><input type="checkbox" value="@item.orderID" name="id" id="id" /></td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.orderID)
                                     </td>
@@ -94,28 +79,15 @@
                                         @Html.DisplayFor(modelItem => item.Custormer.cusFullName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Custormer.cusFullName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Custormer.cusFullName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Custormer.cusFullName)
-                                    </td>
-                                    <td>
                                         @Html.DisplayFor(modelItem => item.Custormer.cusPhone)
                                     </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Custormer.cusEmail)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Custormer.cusAddress)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.orderMessage)
-                                    </td>
-                                    <td>
-                                    </td>
+                                     <td>
+                                        @Html.DisplayFor(modelItem => item.orderDateTime)
+                                    </td>  
+                                     <td>
+                                         @*@Html.ActionLink("Duyệt Hóa Đơn","CTHoaDon","HoaDon", new { id = item.cusPhone })*@
+                                         @Html.ActionLink(item.orderID, "CTHoaDon", new { id = item.orderID })
+                                     </td>
                                 </tr>
  i++;
                             } }

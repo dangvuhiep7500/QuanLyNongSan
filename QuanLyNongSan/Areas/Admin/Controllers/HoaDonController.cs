@@ -19,6 +19,23 @@ namespace QuanLyNongSan.Areas.Admin.Controllers
             var hd = db.Orders.Include(n => n.Custormer);
             return View(hd.ToList());
         }
+        public ActionResult CTHoaDon(string id)
+        {
+          /*  if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order model = db.Orders.FirstOrDefault(n => n.orderID == id);
+            if (model == null)
+            {
+                return HttpNotFound();
+            }*/
+            /*var lstChiTietDH = db.OrderDetails.Where(n => n.OrderID == id);
+            *//*ViewBag.ListChiTietDH = lstChiTietDH;*//*
+            return View(lstChiTietDH);*/
+            var hd = db.OrderDetails.Include(n => n.NongSan);
+            return View(hd.ToList());
+        }
         public ActionResult Delete(string id)
         {
             var model = db.Orders.SingleOrDefault(p => p.orderID.Equals(id));
