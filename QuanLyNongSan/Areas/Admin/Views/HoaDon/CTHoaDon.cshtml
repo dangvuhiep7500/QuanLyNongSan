@@ -1,62 +1,64 @@
-﻿@*@using QuanLyNongSan.Models*@
-@model List<QuanLyNongSan.Models.OrderDetail>
+﻿@using QuanLyNongSan.Models;
+@model Order
+@{ ViewBag.Title = "DuyetDonHang";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml"; }
 
-@{
-    ViewBag.Title = "CTHoaDon";
-    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
-}
-@*@{ IEnumerable<OrderDetail> lstChiTietDH = (IEnumerable<OrderDetail>)ViewBag.ListChiTietDH;}*@
+@using (Html.BeginForm())
+{
+     <h2>&nbsp;</h2>
+     <div class="container">
+    <a href="/Admin/HoaDon" style=" color: #fff; background-color: #0da22f; border-color: #0da22f;" type="submit" class="btn btn-danger">Quay lại </a>
+     </div>
 <div class="container" id="table">
-    @foreach (var list in Model)
-    {
+    @{ IEnumerable<OrderDetail> lstChiTietDH = (IEnumerable<OrderDetail>)ViewBag.ListChiTietDH;}
+   
+    
+    <div class="spec ">
+        <h3><a href="#" style="text-decoration:none;">Hoá đơn: @Model.orderID @Html.Hidden("orderID", Model.orderID) </a></h3>
+        <div class="ser-t">
+            <b></b>
+            <span><i></i></span>
+            <b class="line"></b>
+        </div>
+    </div>
+    <div class="alert alert-danger">
+        Hình thức thanh toán: chỉ nhận tiền mặt khi giao hàng.
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    Họ và tên khách: @Model.Custormer.cusFullName
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <br />
+                        Số điện thoại:@Model.cusPhone <br />
+                        Email: @Model.Custormer.cusEmail <br />
+                        Địa chỉ: @Model.Custormer.cusAddress <br />
+                        Ghi chú: @Model.orderMessage
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    Người giao hàng
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <br />
+                        Họ và Tên: Đinh Lê Tấn Hùng<br />
+                        Số điện thoại: 0975889699<br />
+                        Email: hungle@gmail.com<br />
+                        Địa chỉ: Quận Gò Váp
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <h2>&nbsp;</h2>
-        <div class="spec ">
-            <h3><a href="#" style="text-decoration:none;">Hoá đơn:@list.OrderID </a></h3>
-            <div class="ser-t">
-                <b></b>
-                <span><i></i></span>
-                <b class="line"></b>
-            </div>
-        </div>
-        <div class="alert alert-danger">
-            Hình thức thanh toán: chỉ nhận tiền mặt khi giao hàng.
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="panel panel-success">
-                    <div class="panel-heading">
-                        Họ và tên khách: @list.Order.Custormer.cusFullName
-                    </div>
-                    <div class="panel-body">
-                        <p>
-                            <br />
-                            Số điện thoại:@list.Order.cusPhone <br />
-                            Email: @list.Order.Custormer.cusEmail <br />
-                            Địa chỉ: @list.Order.Custormer.cusAddress <br />
-                            Ghi chú: @list.Order.orderMessage
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="panel panel-danger">
-                    <div class="panel-heading">
-                        Người giao hàng
-                    </div>
-                    <div class="panel-body">
-                        <p>
-                            <br />
-                            Họ và Tên: Đinh Lê Tấn Hùng<br />
-                            Số điện thoại: 0975889699<br />
-                            Email: hungle@gmail.com<br />
-                            Địa chỉ: Quận Gò Váp
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
 
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -77,18 +79,18 @@
                     <tbody>
                         @{ int i = 0;
                             int tong = 0; }
-                        @foreach (var item in Model)
+                        @foreach (var item in lstChiTietDH)
                         {
                             i++;
-                            <tr>
-                                <td>@i</td>
-                                <td><img src="@item.NongSan.HinhAnhDaiDien" width="50" height="50"></td>
-                                <td>@item.NongSan.TenNS</td>
-                                <td>@item.Quantity</td>
-                                <td>@Int32.Parse(item.ThanhTien).ToString("#,##0") VNĐ</td>
-                            </tr>
-                            tong += Int32.Parse(item.ThanhTien);
-                        }
+        <tr>
+            <td>@i</td>
+            <td><img src="@item.NongSan.HinhAnhDaiDien" width="50" height="50"></td>
+            <td>@item.NongSan.TenNS</td>
+            <td>@item.Quantity</td>
+            <td>@Int32.Parse(item.ThanhTien).ToString("#,##0") VNĐ</td>
+        </tr>
+tong += Int32.Parse(item.ThanhTien);
+    }
                     </tbody>
                     <tfoot>
                         <tr>
@@ -107,7 +109,11 @@
 </div>
 <div class="container">
     <input type="submit" value="In đơn hàng" id="btnInDonHang" />
+
+
 </div>
+}
+
 <script>
     $("#btnInDonHang").click(function () {
         var content = "<table>" + $("#table").html() + "</table>";

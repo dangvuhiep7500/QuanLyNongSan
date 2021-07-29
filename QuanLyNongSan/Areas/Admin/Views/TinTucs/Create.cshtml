@@ -32,14 +32,14 @@
                 <input type="button" class="btn-primary form-control" id="browse" value="Chọn File" />
             </div>
             <script>
-            $("#browse").click(function () {
-            var finder = new CKFinder();
-            finder.selectActionFunction = function (fileUrl) {
-            //fileUrl = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
-                $("#HinhAnhDaiDien").val(fileUrl);
-            }
-            finder.popup();
-            });
+                $("#browse").click(function () {
+                    var finder = new CKFinder();
+                    finder.selectActionFunction = function (fileUrl) {
+                        //fileUrl = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
+                        $("#HinhAnhDaiDien").val(fileUrl);
+                    }
+                    finder.popup();
+                });
             </script>
         </div>
 

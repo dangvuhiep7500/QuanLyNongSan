@@ -209,8 +209,8 @@ D:\QuanLyNongSan\QuanLyNongSan\bin\Microsoft.Owin.Security.Twitter.xml
 D:\QuanLyNongSan\QuanLyNongSan\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\QuanLyNongSan\QuanLyNongSan\bin\Microsoft.Owin.Security.OAuth.xml
 D:\QuanLyNongSan\QuanLyNongSan\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\QuanLyNongSan\QuanLyNongSan\obj\Debug\QuanLyNongSan.csproj.AssemblyReference.cache
 D:\QuanLyNongSan\QuanLyNongSan\obj\Debug\QuanLyNongSan.csproj.CoreCompileInputs.cache
 D:\QuanLyNongSan\QuanLyNongSan\obj\Debug\QuanLyNongSan.csproj.CopyComplete
 D:\QuanLyNongSan\QuanLyNongSan\obj\Debug\QuanLyNongSan.dll
 D:\QuanLyNongSan\QuanLyNongSan\obj\Debug\QuanLyNongSan.pdb
+D:\QuanLyNongSan\QuanLyNongSan\obj\Debug\QuanLyNongSan.csproj.AssemblyReference.cache

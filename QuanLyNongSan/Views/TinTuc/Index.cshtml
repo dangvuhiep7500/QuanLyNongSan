@@ -1,14 +1,16 @@
 ﻿@model IEnumerable<QuanLyNongSan.Models.TinTuc>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+<div id="detail" class="my-5">
+    <div class="container ">
 
-<div class="row">
-    @{
-        foreach (var item in Model)
-        {
+        <div class="row mt-4">
+
+            <div class="col-md-9">
+                <div class="row">
+                    @{ foreach (var item in Model)
+                        {
             <div class="col-md-4">
                 <div class="thumbnail">
                     <a class="fancybox" href="#" data-fancybox-group="gallery" title='@item.TieuDe'>
@@ -23,7 +25,9 @@
                         @Html.ActionLink("Xem thêm", "ChiTietTin", "TinTuc", new { id = item.IDTinTuc }, new { @class = "btn btn-success", @role = "button" })
                     </div>
                 </div>
+            </div> } }
+                </div>
             </div>
-        }
-    }
+        </div>
+    </div>
 </div>

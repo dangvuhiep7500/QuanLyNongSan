@@ -19,26 +19,36 @@ namespace QuanLyNongSan.Areas.Admin.Controllers
             var hd = db.Orders.Include(n => n.Custormer);
             return View(hd.ToList());
         }
+        [HttpGet]
         public ActionResult CTHoaDon(string id)
         {
-          /*  if (id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order model = db.Orders.FirstOrDefault(n => n.orderID == id);
+            Order model = db.Orders.SingleOrDefault(n => n.orderID == id);
             if (model == null)
             {
                 return HttpNotFound();
-            }*/
-            /*var lstChiTietDH = db.OrderDetails.Where(n => n.OrderID == id);
-            *//*ViewBag.ListChiTietDH = lstChiTietDH;*//*
-            return View(lstChiTietDH);*/
-            var hd = db.OrderDetails.Include(n => n.NongSan);
-            return View(hd.ToList());
+            }
+            // Lấy ds chi tiết đơn hàng để hiển thị cho người dùng thấy
+            var lstChiTietDH = db.OrderDetails.Where(n => n.OrderID == id);
+            ViewBag.ListChiTietDH = lstChiTietDH;
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult CTHoaDon(Order ddh)
+        {
+            // Lấy dữ liệu của đơn hàng đó
+            Order ddhUpdate = db.Orders.SingleOrDefault(n => n.orderID == ddh.orderID);
+            // Lấy ds chi tiết đơn hàng để hiển thị cho người dùng thấy
+            var lstChiTietDH = db.OrderDetails.Where(n => n.OrderID == ddh.orderID);
+            ViewBag.ListChiTietDH = lstChiTietDH;
+            return View(ddhUpdate);
         }
         public ActionResult Delete(string id)
         {
-            var model = db.Orders.SingleOrDefault(p => p.orderID.Equals(id));
+            var model = db.Orders.SingleOrDefault(p => p.orderID == id);
             try
             {
                 if (model != null)
@@ -67,7 +77,7 @@ namespace QuanLyNongSan.Areas.Admin.Controllers
         }
         public ActionResult Close()
         {
-            return RedirectToAction("Index", "HoaDon");
+            return RedirectToAction("Index", "Default");
         }
     }
 }
